@@ -333,7 +333,7 @@ public class ExcavatorController : MonoBehaviour
 
             /* Tracks */
             if (inputEvents.trackRight != 0F || inputEvents.trackLeft != 0F)
-{
+            {
                 float rotationRight = -delta * 0.6F * inputEvents.trackRight;
                 float rotationLeft = delta * 0.6F * inputEvents.trackLeft;
                 float deltaRotation = rotationRight + rotationLeft;

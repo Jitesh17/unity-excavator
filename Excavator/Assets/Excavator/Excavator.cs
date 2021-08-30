@@ -228,7 +228,7 @@ public class Excavator
     GameObject rightTrack;
     GameObject leftTrack;
 
-    Rigidbody rb;
+    public Rigidbody rb {get; private set;}
 
     Camera operatorViewCamera;
     Camera rearRightCamera;
