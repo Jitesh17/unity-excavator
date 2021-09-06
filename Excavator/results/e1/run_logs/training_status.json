@@ -1,0 +1,65 @@
+{
+    "Excavator0": {
+        "checkpoints": [
+            {
+                "steps": 9984,
+                "file_path": "results/e1/Excavator0/Excavator0-9984.onnx",
+                "reward": null,
+                "creation_time": 1630919025.5560818,
+                "auxillary_file_paths": [
+                    "results/e1/Excavator0/Excavator0-9984.pt"
+                ]
+            },
+            {
+                "steps": 14976,
+                "file_path": "results/e1/Excavator0/Excavator0-14976.onnx",
+                "reward": null,
+                "creation_time": 1630919101.8509693,
+                "auxillary_file_paths": [
+                    "results/e1/Excavator0/Excavator0-14976.pt"
+                ]
+            },
+            {
+                "steps": 19968,
+                "file_path": "results/e1/Excavator0/Excavator0-19968.onnx",
+                "reward": null,
+                "creation_time": 1630919169.8638935,
+                "auxillary_file_paths": [
+                    "results/e1/Excavator0/Excavator0-19968.pt"
+                ]
+            },
+            {
+                "steps": 24960,
+                "file_path": "results/e1/Excavator0/Excavator0-24960.onnx",
+                "reward": null,
+                "creation_time": 1630919232.8475215,
+                "auxillary_file_paths": [
+                    "results/e1/Excavator0/Excavator0-24960.pt"
+                ]
+            },
+            {
+                "steps": 28672,
+                "file_path": "results/e1/Excavator0/Excavator0-28672.onnx",
+                "reward": null,
+                "creation_time": 1630919277.86498,
+                "auxillary_file_paths": [
+                    "results/e1/Excavator0/Excavator0-28672.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 28672,
+            "file_path": "results/e1/Excavator0.onnx",
+            "reward": null,
+            "creation_time": 1630919277.86498,
+            "auxillary_file_paths": [
+                "results/e1/Excavator0/Excavator0-28672.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.26.0",
+        "torch_version": "1.8.1+cu102"
+    }
+}

@@ -245,7 +245,8 @@ public class CustomExcavator
         transform.Find(swingAxisPath + "/RearCameraLeft").gameObject.AddComponent<MirrorFlipCamera>();
  
         bucket.AddComponent<MeshCollider>();
-        // bucket.GetComponent<MeshCollider>().convex = true;
+        bucket.GetComponent<MeshCollider>().convex = true;
+        bucket.GetComponent<MeshCollider>().isTrigger = true;
         arm.AddComponent<MeshCollider>();
         arm.GetComponent<MeshCollider>().convex = true;
         boom.AddComponent<MeshCollider>();
@@ -360,7 +361,7 @@ public class CustomExcavator
         get
         {
             float angle = Vector3.SignedAngle(excavatorForwardAxis.right, swingAxis.right, swingAxis.up);
-            Debug.Log($"swing angle = {angle}");
+            // Debug.Log($"swing angle = {angle}");
             return angle;
         }
     }
@@ -375,7 +376,7 @@ public class CustomExcavator
                 boomAxis.Rotate(value, 0, 0);
                 OrientBoomCylinder();
             }
-            Debug.Log($"boomAngle: {boomAngle}");
+            // Debug.Log($"boomAngle: {boomAngle}");
         }
         get
         {
@@ -393,7 +394,7 @@ public class CustomExcavator
                 armAxis.Rotate(-value, 0, 0);
                 OrientArmCylinder();
             }
-            Debug.Log($"armAngle: {armAngle}");
+            // Debug.Log($"armAngle: {armAngle}");
         }
         get
         {
@@ -463,7 +464,7 @@ public class CustomExcavator
         Vector3 forwardDirection = (excavatorForwardAxis.rotation * Vector3.right).normalized;
         float force = driveParams.mass * accel;  // F = m * a
         rb.AddForceAtPosition(forwardDirection * force, transform.position, ForceMode.Force);
-        Debug.Log($"Force: {driveParams.mass * accel}");
+        // Debug.Log($"Force: {driveParams.mass * accel}");
 
     }
 
@@ -513,7 +514,7 @@ public class CustomExcavator
 
             float force = driveParams.mass * this.accel;  // F = m * a
             rb.AddForceAtPosition(forwardDirection * force, transform.position, ForceMode.Force);
-            Debug.Log($"Force: {driveParams.mass * this.accel}");
+            // Debug.Log($"Force: {driveParams.mass * this.accel}");
 
             return true;
         }
@@ -543,6 +544,34 @@ public class CustomExcavator
     {
         bucket.GetComponent<MeshCollider>().enabled = !enable;
     }
+
+    // public virtual void OnTriggerEnter(Collider other)
+    // {
+    //     StorableItem item = other.GetComponent<StorableItem>();
+    //     if (item)
+    //     {
+    //         collisionCount++;
+    //         currentItem = item;
+    //     }
+    // }
+    // public virtual void OnTriggerStay(Collider other)
+    // {
+    //     if (currentItem != null)
+    //     {
+    //         if (Grab.stateUp || Pinch.stateUp)
+    //         {
+    //             InventoryAddBehavior(currentItem, currentItem.gameObject);
+    //         }
+    //     }
+    // }
+    // public virtual void OnTriggerExit(Collider other)
+    // {
+    //     StorableItem item = other.GetComponent<StorableItem>();
+    //     if (item)
+    //     {
+    //         collisionCount--;
+    //     }
+    // }
 
     public bool useHook
     {

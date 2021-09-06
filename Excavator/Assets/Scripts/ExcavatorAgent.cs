@@ -6,8 +6,14 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 
+// public class CountStones
+// {
+//     public int inBucket = 0;
+//     public int inTruck = 0;
+// }
 public class ExcavatorAgent : Agent
 {
+
     public float maxSpeed = 3F;
     public float RotationSpeed = 30F;
     public float creepSpeed = 1F;
@@ -33,6 +39,12 @@ public class ExcavatorAgent : Agent
     private LeverAngles leftOperationLeverAngles = new LeverAngles(0F, 0F);
     private LeverAngles rightTravelLeverAngles = new LeverAngles(0F, 0F);
     private LeverAngles leftTravelLeverAngles = new LeverAngles(0F, 0F);
+    
+    public int countInBucket = 0;
+    public int countInTruck = 0;
+    public int countInContainer = 0;
+    public int countChangeInBucket = 0;
+    public int countChangeInTruck = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -66,6 +78,12 @@ public class ExcavatorAgent : Agent
     public override void OnEpisodeBegin()
     {
         StartCoroutine(excavator.Reset());
+        
+        this.countInBucket = 0;
+        this.countInTruck = 0;
+        this.countInContainer = 0;
+        this.countChangeInBucket = 0;
+        this.countChangeInTruck = 0;
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -81,6 +99,9 @@ public class ExcavatorAgent : Agent
     public override void OnActionReceived(ActionBuffers actions)
 
     { 
+
+        // if(this.countInBucket>0)
+        //     Debug.Log(this.countInBucket);
         // if (frozen) return;
         excavator.OrientHook();
 
@@ -136,7 +157,22 @@ public class ExcavatorAgent : Agent
             // }
 
             // inputEvents.clear();
-            this.AddReward(0.01f);
+            // this.AddReward(0.01f);
+        }
+
+        this.AddReward(this.countChangeInBucket*0.001f);
+        this.AddReward(this.countChangeInTruck*0.01f);
+        this.countChangeInBucket = 0;
+        this.countChangeInTruck = 0;
+        Debug.Log($"this.GetCumulativeReward(): {this.GetCumulativeReward()}");
+
+        if(this.countInContainer<10)
+        {
+            this.EndEpisode();
+        }
+        if(Mathf.Abs(this.transform.rotation.x)>20 || Mathf.Abs(this.transform.rotation.z)>20 )
+        {
+            this.EndEpisode();
         }
 
 
