@@ -240,6 +240,8 @@ public class Excavator
     {
         this.excavator = excavator;
         Transform transform = excavator.transform;
+        Debug.Log("transform.gameObject.name");
+        Debug.Log(transform.gameObject.name);
         excavator.AddComponent<Rigidbody>();
         rb = transform.GetComponent<Rigidbody>();
         rb.mass = 20000;  // 20,000 Kg
@@ -250,7 +252,6 @@ public class Excavator
         boomAxis = transform.Find(boomAxisPath);
         armAxis = transform.Find(armAxisPath);
         bucketAxis = transform.Find(bucketAxisPath);
-
         swingAxisInitialQ = swingAxis.localRotation;
         boomAxisInitialQ = boomAxis.localRotation;
         armAxisInitialQ = armAxis.localRotation;
@@ -262,6 +263,7 @@ public class Excavator
         boomCylinderRightAxis1 = transform.Find(swingAxisPath + "/Bone.001/Bone.011/BoomCylinderRightAxis1");
         boomCylinderRight1Target = transform.Find(boomAxisPath + "/BoomCylinderRight1Target");
 
+        // Debug.Log(boomCylinderRight1Target.transform.gameObject.name);
         boomCylinderRightAxis2 = transform.Find(boomAxisPath + "/Bone.015/BoomCylinderRightAxis2");
         boomCylinderRight2Target = transform.Find(swingAxisPath + "/BoomCylinderRight2Target");
 
@@ -330,6 +332,7 @@ public class Excavator
         boomArmJoint = transform.Find(boomAxisPath + "/Cylinder.023");
         armBucketJoint = transform.Find(armAxisPath + "/Cylinder.041");
 
+        // Debug.Log($" boomArmAngle={geometry.boomArmAngle}");
         boomLength = (boomArmJoint.position - bodyBoomJoint.position).magnitude;
         armLength = (armBucketJoint.position - boomArmJoint.position).magnitude;
         armLengthHook = (hookMainAxis.position - boomArmJoint.position).magnitude;
@@ -345,7 +348,7 @@ public class Excavator
 
         bucket = transform.Find(bucketAxisPath + "/Vert.002").gameObject;
         bucketCuttingEdges = transform.Find(bucketAxisPath + "/Cube.019");
-        bucketPosition = transform.Find(armLinkageAxisPath + "/BucketCylinderAxis2/Sphere.007");
+        // bucketPosition = transform.Find(armLinkageAxisPath + "/BucketCylinderAxis2/Sphere.007");
         arm = transform.Find(armAxisPath + "/Vert.001").gameObject;
         boom = transform.Find(boomAxisPath + "/Cube.010").gameObject;
         body = transform.Find(swingAxisPath + "/Cube").gameObject;
@@ -365,7 +368,7 @@ public class Excavator
         transform.Find(swingAxisPath + "/RearCameraLeft").gameObject.AddComponent<MirrorFlipCamera>();
  
         bucket.AddComponent<MeshCollider>();
-        bucket.GetComponent<MeshCollider>().convex = true;
+        // bucket.GetComponent<MeshCollider>().convex = true;
         arm.AddComponent<MeshCollider>();
         arm.GetComponent<MeshCollider>().convex = true;
         boom.AddComponent<MeshCollider>();

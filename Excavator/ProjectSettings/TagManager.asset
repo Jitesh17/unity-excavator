@@ -13,6 +13,11 @@ TagManager:
   - TravelIndicator
   - OperationIndicator
   - Target1
+  - Stone
+  - cam0
+  - cam1
+  - cam2
+  - cam_front
   layers:
   - Default
   - TransparentFX
